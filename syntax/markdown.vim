@@ -105,8 +105,10 @@ syn match  mkdRule         /^\s*-\s\{0,1}-\s\{0,1}-$/
 syn match  mkdRule         /^\s*_\s\{0,1}_\s\{0,1}_$/
 syn match  mkdRule         /^\s*-\{3,}$/
 syn match  mkdRule         /^\s*\*\{3,5}$/
+syn region lqdHighlight    start=/^{%\s*highlight\(\s\+\w\+\)\{0,1}\s*%}$/ end=/^{%\s*endhighlight\s*%}/
 
 " YAML frontmatter
+"
 if get(g:, 'vim_markdown_frontmatter', 0)
   syn include @yamlTop syntax/yaml.vim
   syn region Comment matchgroup=mkdDelimiter start="\%^---$" end="^---$" contains=@yamlTop
@@ -142,6 +144,7 @@ endif
 syn cluster mkdNonListItem contains=@htmlTop,htmlItalic,htmlBold,htmlBoldItalic,mkdFootnotes,mkdInlineURL,mkdLink,mkdLinkDef,mkdLineBreak,mkdBlockquote,mkdCode,mkdRule,htmlH1,htmlH2,htmlH3,htmlH4,htmlH5,htmlH6,mkdMath
 
 "highlighting for Markdown groups
+HtmlHiLink lqdHighlight     String
 HtmlHiLink mkdString        String
 HtmlHiLink mkdCode          String
 HtmlHiLink mkdCodeStart     String
